@@ -5,8 +5,17 @@
 ![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/ed4650e9-35ce-4bde-9cd8-5bb27c9b25a3)
 ![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/a6146ef7-71fe-49ed-bfe6-242513409c4b)
 ![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/0f35ddd1-6d03-48a7-9392-ceec24a1277d)
+Before Submission of Form:
+![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/b9508b52-1183-4505-8a9c-c53e4c7e73e5)
+After Submission of Form:
+![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/0a6db25f-c82c-472f-ac0c-d0c24e0cdbd1)
 
-
-
+Topics Covered:
+1. What is a template driven form and how to create it?
+2. How to retrieve the values from the form elements of a template driven form?
+3. How to group form controls together?
+4. How to perform validation on a template driven form?
+5. Setting the value for a form control in template driven form?
+6. Re-setting a form and many more things.
 
 
