@@ -4,51 +4,68 @@
   <form class="form" (ngSubmit)="onFormSubmitted(registrationForm)" #registrationForm="ngForm">
     <div class="column">
       <div class="input-box">
-        <input type="text" placeholder="First Name" name="firstname" ngModel/>
+        <input type="text" placeholder="First Name" name="firstname" [(ngModel)]="firstName" required #fname="ngModel"/>
+        <div *ngIf="fname.invalid && fname.touched">
+          <small>First Name is required</small>
+        </div>
+        <div *ngIf="fname.valid && fname.touched">
+          <span>First Name : {{firstName}} </span>
+        </div>
       </div> 
-
+      
       <div class="input-box">
-        <input type="text" placeholder="Last Name" name="lastname" ngModel/>
+        <input type="text" placeholder="Last Name" name="lastname" [(ngModel)]="lastName" required #lname="ngModel"/>
+        <div *ngIf="lname.invalid && lname.touched"><small>Last Name is required</small></div>
+      </div>
+      <div *ngIf="lname.valid && lname.touched">
+        <span>Last Name : {{lastName}} </span>
       </div>
     </div>    
 
     <div class="input-box">
-      <input type="text" placeholder="Email" name="email" ngModel/>
+      <input type="text" placeholder="Email" name="email" [(ngModel)]="emailId" required #email="ngModel" email/>
+      <div *ngIf="email.invalid && email.touched"><small>Email is required</small></div>
+      <div *ngIf="email.valid && email.touched">
+        <span>Email : {{emailId}} </span>
+      </div>
     </div>
 
     <div class="column">
       <div class="input-box">
-        <input type="number" placeholder="Phone Number" name="phonenumber" ngModel/>
+        <input type="number" placeholder="Phone Number" name="phonenumber" ngModel required/>
       </div>
       <div class="input-box">
-        <input type="date" placeholder="Date of Birth" name="dateofbirth" ngModel/>
+        <input type="date" placeholder="Date of Birth" name="dateofbirth" ngModel required #dob="ngModel"/>
       </div>
     </div>
 
     <div class="input-box">
-      <input type="text" placeholder="username" name="username" ngModel/>
-      <button class="btn-gen-username">
+      <input type="text" placeholder="username" name="username" required ngModel #uname="ngModel"/>
+      <button type="button" class="btn-gen-username" [disabled]="fname.invalid || lname.invalid || dob.invalid" (click)=generateUserName()>
         Create a Username
       </button>
+      <div>
+        <small *ngIf="!uname.valid && uname.touched">Username is required field</small>
+       </div>
     </div>
 
     <div class="gender-box">
       <h3>Gender</h3>
       <div class="gender-option">
         <div class="gender" *ngFor="let gen of genders">
-          <input type="radio" [id]="gen.id" name="gender" [value]="gen.value" ngModel/>
+          <input type="radio" [id]="gen.id" name="gender" [value]="gen.value" [(ngModel)]="defaultGender" required/>
           <label for="check-male">{{gen.display}}</label>
         </div>
       </div>
     </div>
 
-    <div class="input-box address">
+    <div class="input-box address" ngModelGroup="address" #addr="ngModelGroup">
       <label>Address</label>
-      <input type="text" placeholder="Street address" name="address1" ngModel/>
+      <input type="text" placeholder="Street address" name="address1" ngModel required/>
       <input type="text" placeholder="Street address line 2" name="address2" ngModel/>
       <div class="column">
         <div class="select-box">
-          <select name="country" ngModel>
+          <select name="country" [(ngModel)]="defaultCountry" required>
             <option hidden>Country</option>
             <option>America</option>
             <option>Japan</option>
@@ -56,13 +73,37 @@
             <option>Nepal</option>
           </select>
         </div>
-        <input type="text" placeholder="City" name="city" ngModel />
+        <input type="text" placeholder="City" name="city" ngModel required/>
       </div>
       <div class="column">
         <input type="text" placeholder="Region" name="region" ngModel/>
-        <input type="number" placeholder="Postal code" name="postalcode" ngModel/>
+        <input type="number" placeholder="Postal code" name="postalcode" ngModel required/>
       </div>
     </div>
-    <input type="submit" value="Submit" class="submit-btn"> 
+    <small *ngIf="!addr.valid && addr.touched">*Some of the address field does not contain valid value</small>
+    <input type="submit" value="Submit" class="submit-btn" [disabled]="!registrationForm.valid" (click)="onFinalSubmit()"> 
   </form>
+</section>
+
+<section class="user-detail-container" [ngClass]="{'is-visible': finalStatus}">
+  <div class="user-details-container">
+    <div class="user-avatar">
+      <p>{{firstName.slice(0, 1).toUpperCase()}}{{lastName.slice(0, 1).toUpperCase()}}</p>
+    </div>
+    <div class="user-details">
+      <div class="user-name">
+        <h2>{{ firstName }} {{ lastName }}</h2>
+      </div>
+      <p><b>Email:</b> {{ emailId}}</p>
+      <p><b>Username:</b> {{ userName }} </p>
+      <p><b>Date of birth:</b> {{ dateofbirth }}</p>
+      <div class="user-name">
+        <h3>Address</h3>
+      </div>
+      <span>{{country }}</span>.
+      <span>{{ city }}</span>.
+      <span>{{ region }}</span>.
+      <span> {{ postalcode }}</span>
+    </div>
+  </div>
 </section>

@@ -106,7 +106,7 @@
 
 .form-shadow{
   box-shadow: rgba(187, 185, 185, 0.35) 0px 5px 15px;
-  background-color: pink;
+  
 }
 
 input.ng-invalid.ng-touched{
@@ -163,4 +163,12 @@ small{
 span{
   padding: 5px 5px;
   font-weight: bold;
+}
+
+input.ng-invalid.ng-touched{
+  border: red 2px solid;
+}
+
+.is-visible{
+  display: none;
 }
