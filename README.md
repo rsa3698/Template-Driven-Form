@@ -7,8 +7,11 @@
 ![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/0f35ddd1-6d03-48a7-9392-ceec24a1277d)
 Before Submission of Form:
 ![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/b9508b52-1183-4505-8a9c-c53e4c7e73e5)
+
+
 After Submission of Form:
 ![image](https://github.com/rsa3698/Template-Driven-Form/assets/102802999/0a6db25f-c82c-472f-ac0c-d0c24e0cdbd1)
+
 
 Topics Covered:
 1. What is a template driven form and how to create it?
